@@ -11,9 +11,9 @@ endif ()
 
 include(GNUInstallDirs)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_INSTALL_BINDIR}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_INSTALL_LIBDIR}")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_INSTALL_LIBDIR}")
 set(CMAKE_CXX_STANDARD 11)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
@@ -79,26 +79,26 @@ endif()
 include(CMakePackageConfigHelpers)
 
 write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config-version.cmake"
+  "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config-version.cmake"
   VERSION "${squirrel_VERSION}"
   COMPATIBILITY AnyNewerVersion
   )
 
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/squirrel-config.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config.cmake"
+  "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config.cmake"
   INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel"
   )
 
 if(NOT SQ_DISABLE_INSTALLER AND NOT SQ_DISABLE_CMAKE_INSTALLER)
   export(EXPORT squirrel
     NAMESPACE squirrel::
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-targets.cmake"
+    FILE "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-targets.cmake"
     )
 
   install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config-version.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config.cmake"
+    "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config-version.cmake"
+    "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel/squirrel-config.cmake"
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/squirrel"
     COMPONENT Development
     )
